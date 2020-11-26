@@ -1,0 +1,25 @@
+server:
+  port: 8080
+    
+spring:
+  application:
+    name: msa-query
+  datasource:
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://localhost:3306/gts?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+      username: root
+      password: root
+      connection-test-query: SELECT 1
+
+#Config Server      
+  cloud:
+    config:
+      uri: http://localhost:8888 
+      name: msa-config-server
+
+#Eureka Client   
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
